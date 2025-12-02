@@ -1,0 +1,1895 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transpareo - Business Plan 2025</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #ecf0f1 0%, #f5f7fa 100%);
+            color: #2c3e50;
+            line-height: 1.7;
+        }
+        
+        /* NAVIGATION SIDEBAR */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 80px;
+            height: 100vh;
+            background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%);
+            padding: 20px 0;
+            z-index: 1000;
+            overflow-y: auto;
+            transition: width 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+        }
+        
+        .sidebar:hover {
+            width: 220px;
+        }
+        
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 16px 12px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+            font-size: 13px;
+            font-weight: 500;
+            white-space: nowrap;
+            gap: 12px;
+        }
+        
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-left-color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .nav-item.active {
+            background: rgba(255, 255, 255, 0.3);
+            border-left-color: white;
+        }
+        
+        .nav-icon {
+            font-size: 20px;
+            min-width: 24px;
+            text-align: center;
+        }
+        
+        .nav-label {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .sidebar:hover .nav-label {
+            opacity: 1;
+        }
+        
+        /* MAIN CONTENT */
+        .main-wrapper {
+            margin-left: 80px;
+            min-height: 100vh;
+            transition: margin-left 0.3s ease;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+        }
+        
+        /* COVER PAGE */
+        .cover {
+            background: linear-gradient(135deg, #ecf0f1 0%, #f8f9fa 50%, #ecf0f1 100%);
+            color: #2c3e50;
+            padding: 60px 60px;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .cover .logo {
+            font-size: 14px;
+            letter-spacing: 3px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            font-weight: 600;
+        }
+        
+        .cover .title {
+            font-size: 64px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .cover .subtitle {
+            font-size: 28px;
+            margin-bottom: 80px;
+            font-weight: 300;
+            color: #34495e;
+        }
+        
+        .company-info {
+            background: white;
+            padding: 35px;
+            border-radius: 12px;
+            margin: 40px 0;
+            font-size: 14px;
+            line-height: 2;
+            border: 1px solid #d5dbdb;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        
+        .company-info p {
+            margin: 8px 0;
+            color: #34495e;
+        }
+        
+        .tagline {
+            font-size: 22px;
+            margin: 60px 0 40px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-left: 4px solid #3498db;
+            border-radius: 8px;
+            font-style: italic;
+            color: #2c3e50;
+        }
+        
+        .toc-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 50px;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #d5dbdb;
+        }
+        
+        .toc-item {
+            font-size: 13px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            color: #34495e;
+        }
+        
+        .toc-item:hover {
+            background: #f8f9fa;
+        }
+        
+        .toc-num {
+            color: #3498db;
+            font-weight: 700;
+            margin-right: 8px;
+        }
+        
+        /* SECTION PAGES */
+        .page {
+            padding: 70px 60px;
+            border-top: 4px solid #3498db;
+            page-break-after: always;
+            min-height: 100vh;
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 50px;
+            gap: 25px;
+        }
+        
+        .section-num {
+            font-size: 80px;
+            font-weight: 700;
+            color: #bdc3c7;
+            line-height: 1;
+        }
+        
+        .section-title {
+            font-size: 42px;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+        
+        .subsection {
+            margin: 50px 0;
+        }
+        
+        .subsection-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #3498db;
+            display: inline-block;
+        }
+        
+        .content-box {
+            background: #f8f9fa;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 10px;
+            border-left: 4px solid #3498db;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+        
+        .content-box:hover {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+        
+        .content-box h4 {
+            color: #2c3e50;
+            font-size: 18px;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        
+        .content-box p {
+            color: #555;
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+        
+        .content-box ul, .content-box ol {
+            margin-left: 20px;
+            color: #555;
+            font-size: 15px;
+        }
+        
+        .content-box li {
+            margin: 8px 0;
+        }
+        
+        .source {
+            font-size: 12px;
+            color: #7f8c8d;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #ecf0f1;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 35px 0;
+        }
+        
+        .metric-box {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(52, 152, 219, 0.15);
+        }
+        
+        .metric-box:hover {
+            transform: none;
+            box-shadow: 0 2px 8px rgba(52, 152, 219, 0.15);
+        }
+        
+        .metric-value {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .metric-label {
+            font-size: 13px;
+            opacity: 0.95;
+            font-weight: 500;
+        }
+        
+        .advantage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .advantage-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            border-top: 4px solid #3498db;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+        
+        .advantage-item:hover {
+            transform: none;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+        
+        .advantage-item h4 {
+            color: #2c3e50;
+            font-size: 16px;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        
+        .advantage-item p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .team-member {
+            margin: 35px 0;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #3498db;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            display: flex;
+            gap: 25px;
+            align-items: flex-start;
+        }
+        
+        .team-member-content {
+            flex: 1;
+        }
+        
+        .team-member-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 10px;
+            background: #ecf0f1;
+            border: 2px solid #bdc3c7;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #7f8c8d;
+            overflow: hidden;
+        }
+        
+        .team-member-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .team-member h4 {
+            color: #2c3e50;
+            font-size: 18px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .team-member p {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        
+        .team-member strong {
+            color: #1a1a1a;
+        }
+        
+        .segment-list {
+            margin: 25px 0;
+        }
+        
+        .segment-item {
+            margin: 18px 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #fff8f3 0%, #fffbf7 100%);
+            border-left: 4px solid #ff6b35;
+            border-radius: 8px;
+        }
+        
+        .segment-num {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 35px;
+            font-weight: 700;
+            margin-right: 12px;
+            font-size: 14px;
+        }
+        
+        .segment-title {
+            font-weight: 700;
+            color: #1a1a1a;
+            font-size: 16px;
+        }
+        
+        .segment-desc {
+            color: #666;
+            font-size: 14px;
+            margin-top: 10px;
+            line-height: 1.6;
+        }
+        
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .swot-box {
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+        
+        .swot-strengths {
+            background: #f0fdf4;
+            border-top: 4px solid #27ae60;
+        }
+        
+        .swot-weaknesses {
+            background: #fffbeb;
+            border-top: 4px solid #f39c12;
+        }
+        
+        .swot-opportunities {
+            background: #eff6ff;
+            border-top: 4px solid #3498db;
+        }
+        
+        .swot-threats {
+            background: #fef2f2;
+            border-top: 4px solid #e74c3c;
+        }
+        
+        .swot-box h4 {
+            font-weight: 700;
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #2c3e50;
+        }
+        
+        .swot-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .swot-box li {
+            font-size: 14px;
+            margin: 10px 0;
+            padding-left: 24px;
+            position: relative;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .swot-box li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            color: #3498db;
+        }
+        
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 30px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px rgba(255, 107, 53, 0.08);
+        }
+        
+        .competitor-table, .financial-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+        
+        .competitor-table th, .financial-table th {
+            background: #34495e;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-size: 13px;
+            font-weight: 700;
+        }
+        
+        .financial-table th {
+            text-align: right;
+        }
+        
+        .financial-table th:first-child {
+            text-align: left;
+        }
+        
+        .competitor-table td, .financial-table td {
+            padding: 15px;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 14px;
+        }
+        
+        .financial-table td {
+            text-align: right;
+        }
+        
+        .financial-table td:first-child {
+            text-align: left;
+            font-weight: 500;
+            color: #1a1a1a;
+        }
+        
+        .competitor-table tr:hover, .financial-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .financial-table tr.total {
+            background: #ecf0f1;
+            font-weight: 700;
+            border-top: 2px solid #3498db;
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 400px;
+            margin: 40px 0;
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+        
+        .step {
+            margin: 25px 0;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #3498db;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+        
+        .step-num {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: 700;
+            margin-right: 12px;
+            font-size: 16px;
+        }
+        
+        .step-title {
+            font-weight: 700;
+            color: #1a1a1a;
+            font-size: 16px;
+            display: inline-block;
+        }
+        
+        .step-content {
+            margin-top: 12px;
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .step-content ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        .step-content li {
+            margin: 6px 0;
+            color: #666;
+        }
+        
+        .value-prop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .value-prop-box {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            border-top: 4px solid #3498db;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+        
+        .value-prop-box:hover {
+            transform: none;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+        
+        .value-prop-box h4 {
+            color: #2c3e50;
+            font-size: 16px;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        
+        .value-prop-box p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+        
+        .conclusion-box {
+            background: #ecf0f1;
+            padding: 40px;
+            border-radius: 12px;
+            border-left: 4px solid #3498db;
+            margin: 40px 0;
+        }
+        
+        .conclusion-box p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .conclusion-box strong {
+            color: #2c3e50;
+        }
+        
+        .risk-item {
+            margin: 20px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .risk-item h4 {
+            color: #2c3e50;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        
+        .risk-category {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .mitigation-bar {
+            background: linear-gradient(90deg, #3498db 0%, #2980b9 100%);
+            height: 6px;
+            border-radius: 3px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+        
+        .mitigation-fill {
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 3px;
+        }
+        
+        @media print {
+            body {
+                background: white;
+            }
+            .container {
+                box-shadow: none;
+                max-width: 100%;
+            }
+            .sidebar {
+                display: none;
+            }
+            .main-wrapper {
+                margin-left: 0;
+            }
+            .page {
+                page-break-after: always;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 60px;
+            }
+            .main-wrapper {
+                margin-left: 60px;
+            }
+            .page {
+                padding: 40px 30px;
+            }
+            .cover {
+                padding: 50px 30px;
+            }
+            .section-num {
+                font-size: 50px;
+            }
+            .section-title {
+                font-size: 28px;
+            }
+            .swot-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION SIDEBAR -->
+    <div class="sidebar" id="sidebar">                <div class="nav-item active" onclick="scrollToSection('cover')">
+                    <div class="nav-icon">01</div>
+                    <div class="nav-label">Couverture</div>
+                </div>
+                <div class="nav-item" onclick="scrollToSection('section-01')">
+                    <div class="nav-icon">A</div>
+                    <div class="nav-label">Marché</div>
+                </div>
+                <div class="nav-item" onclick="scrollToSection('section-02')">
+                    <div class="nav-icon">B</div>
+                    <div class="nav-label">Projet</div>
+                </div>
+                <div class="nav-item" onclick="scrollToSection('section-03')">
+                    <div class="nav-icon">C</div>
+                    <div class="nav-label">Étude</div>
+                </div>
+                <div class="nav-item" onclick="scrollToSection('section-04')">
+                    <div class="nav-icon">D</div>
+                    <div class="nav-label">Stratégie</div>
+                </div>
+                <div class="nav-item" onclick="scrollToSection('section-05')">
+                    <div class="nav-icon">E</div>
+                    <div class="nav-label">Financier</div>
+                </div>
+                <div class="nav-item" onclick="scrollToSection('section-06')">
+                    <div class="nav-icon">F</div>
+                    <div class="nav-label">Opérations</div>
+                </div>
+                <div class="nav-item" onclick="scrollToSection('section-07')">
+                    <div class="nav-icon">G</div>
+                    <div class="nav-label">Conclusion</div>
+                </div>
+    </div>
+    
+    <div class="main-wrapper">
+        <div class="container">
+            <!-- COVER PAGE -->
+            <div class="cover" id="cover">
+                <div class="logo">TRANSPAREO</div>
+                <div class="title">PLATEFORME IMMOBILIÈRE</div>
+                <div class="subtitle">BUSINESS PLAN 2025</div>
+                
+                <div class="company-info">
+                    <p><strong>Fondateur et porteur du projet:</strong> Daniel Altaf</p>
+                    <p><strong>Parcours professionnel:</strong></p>
+                    <p style="margin-left: 20px;">2018-2020: Développeur full-stack indépendant | Clients variés (PME, startups)</p>
+                    <p style="margin-left: 20px;">2020-2021: CTO startup fintech (bootstrap phase)</p>
+                    <p style="margin-left: 20px;">2021-2023: Cofondateur + exit première plateforme SaaS immobilier (acquis par groupe immobilier)</p>
+                    <p style="margin-left: 20px;">2023-2024: Consultant tech, advisory startups</p>
+                    <p style="margin-left: 20px;">2025-Présent: Fondateur Transpareo (vision full ecosystem immobilier)</p>
+                    <p style="margin-top: 15px; border-top: 1px solid #d5dbdb; padding-top: 15px;">Rédigé le 2 décembre 2025 | Toulouse, France</p>
+                    <p>contact@transpareo.fr | www.transpareo.fr</p>
+                </div>
+                
+                <div class="tagline">"Connecter locataires, propriétaires, artisans et agences dans un écosystème de confiance et de transparence"</div>
+                
+                <div class="toc-grid">
+                    <div class="toc-item"><span class="toc-num">A</span>OPPORTUNITÉ DE MARCHÉ</div>
+                    <div class="toc-item" style="font-size: 12px; color: #7f8c8d;">• Chiffres du marché • Problèmes • Tendances • Facteurs succès</div>
+                    <div class="toc-item"><span class="toc-num">B</span>LE PROJET</div>
+                    <div class="toc-item" style="font-size: 12px; color: #7f8c8d;">• Vision • Proposition valeur • Stack tech • Équipe</div>
+                    <div class="toc-item"><span class="toc-num">C</span>ÉTUDE DE MARCHÉ</div>
+                    <div class="toc-item" style="font-size: 12px; color: #7f8c8d;">• Segments • SWOT • Concurrence • Avantages</div>
+                    <div class="toc-item"><span class="toc-num">D</span>LA STRATÉGIE</div>
+                    <div class="toc-item" style="font-size: 12px; color: #7f8c8d;">• Plan d'action • Marketing • Risques</div>
+                    <div class="toc-item"><span class="toc-num">E</span>PRÉVISIONNEL FINANCIER</div>
+                    <div class="toc-item" style="font-size: 12px; color: #7f8c8d;">• P&L • Métriques SaaS • Trésorerie</div>
+                    <div class="toc-item"><span class="toc-num">F</span>OPÉRATIONS & RISQUES</div>
+                    <div class="toc-item" style="font-size: 12px; color: #7f8c8d;">• Structure • Financement • Investissement</div>
+                    <div class="toc-item"><span class="toc-num">G</span>CONCLUSION & VISION</div>
+                    <div class="toc-item" style="font-size: 12px; color: #7f8c8d;">• Synthèse • Prochaines étapes • KPIs</div>
+                </div>
+            </div>
+            
+            <!-- SECTION 01: OPPORTUNITÉ DE MARCHÉ -->
+            <div class="page" id="section-01">
+                <div class="section-header">
+                    <div class="section-num">01</div>
+                    <div class="section-title">OPPORTUNITÉ DE MARCHÉ</div>
+                </div>
+                
+                <div class="subsection">
+                    <div class="subsection-title">1.1 - Chiffres du marché immobilier français</div>
+                    
+                    <div class="content-box">
+                        <h4>📈 Marché total adressable (TAM) : 282-343 milliards d'euros</h4>
+                        <p>Le marché immobilier français est l'un des plus importants d'Europe. Selon les données de l'INSEE et de la FNAIM (Fédération Nationale de l'Immobilier), le secteur immobilier représente environ 15% du PIB français.</p>
+                        <p><strong>Composition du marché :</strong></p>
+                        <ul>
+                            <li><strong>20 millions de locataires</strong> (50% des ménages français) - Source: INSEE 2024</li>
+                            <li><strong>4 millions de propriétaires bailleurs</strong> - Source: DGFIP 2023</li>
+                            <li><strong>65 000 artisans en services immobiliers</strong> - Source: CAPEB 2024</li>
+                            <li><strong>8 000 agences immobilières</strong> - Source: FNAIM 2024</li>
+                            <li><strong>Environ 2.5 millions de transactions par an</strong> - Source: Chambre des Notaires 2023</li>
+                        </ul>
+                        <div class="source">Source: INSEE, FNAIM, DGFIP, CAPEB, Chambre des Notaires (2023-2024)</div>
+                    </div>
+                    
+                    <div class="metrics-grid">
+                        <div class="metric-box">
+                            <div class="metric-value">282-343B€</div>
+                            <div class="metric-label">Marché Total Adressable</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-value">33M</div>
+                            <div class="metric-label">Utilisateurs Potentiels</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-value">15%</div>
+                            <div class="metric-label">% du PIB français</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-value">2.5M</div>
+                            <div class="metric-label">Transactions/an</div>
+                        </div>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>🎯 Segments clés du marché actuel</h4>
+                        <p><strong>Locations résidentielles :</strong> 250-300 milliards d'euros annuels. Le marché locatif français connaît une croissance régulière, avec une demande accrue dans les grandes métropoles (Paris, Lyon, Marseille, Toulouse, Bordeaux). Les loyers ont augmenté de 2-3% par an ces 5 dernières années.</p>
+                        <p><strong>Services annexes (artisans, maintenance) :</strong> 32-43 milliards d'euros annuels. Ce segment inclut la plomberie, électricité, chauffage, peinture, etc. Le marché B2B des services immobiliers est hautement fragmenté.</p>
+                        <div class="source">Source: SeLoger, PAP, Chambre des Notaires (2023-2024)</div>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <div class="subsection-title">1.2 - Problèmes majeurs du marché actuel</div>
+                    
+                    <div class="advantage-grid">
+                        <div class="advantage-item">
+                            <h4>🔍 Manque de transparence</h4>
+                            <p>89% des Français cherchent un logement en ligne, mais seules 12% des transactions incluent une vérification d'identité du propriétaire. Risque arnaque très élevé.</p>
+                            <div class="source">Source: SeLoger 2024</div>
+                        </div>
+                        <div class="advantage-item">
+                            <h4>😞 Regrets d'achat/location</h4>
+                            <p>40% des locataires regrettent leur choix en moins de 3 mois. Les avis manquent de crédibilité et ne sont pas vérifiés par les utilisateurs réels.</p>
+                            <div class="source">Source: PAP, MeilleursAgents 2023</div>
+                        </div>
+                        <div class="advantage-item">
+                            <h4>💸 Impayés propriétaires</h4>
+                            <p>60% des propriétaires expérimentent au moins un impayé dans leur vie. Manque de scoring de locataires efficace et de vérification antécédents.</p>
+                            <div class="source">Source: SNPI 2023</div>
+                        </div>
+                        <div class="advantage-item">
+                            <h4>🔗 Fragmentaiton extrême</h4>
+                            <p>Agences gèrent 6-7 canaux de vente simultanément (SeLoger, PAP, LBC, propriétaire, etc.). Aucun système centralisé efficace.</p>
+                            <div class="source">Source: FNAIM 2024</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <div class="subsection-title">1.3 - Tendances futures du secteur</div>
+                    
+                    <div class="step">
+                        <span class="step-num">1</span>
+                        <span class="step-title">Confiance et vérification deviennent critiques</span>
+                        <div class="step-content">
+                            <p>70% des locataires déclarent avoir peur d'être arnaqués lors de la recherche d'un logement (Source: SeLoger 2024). Le KYC (Know Your Customer) et la vérification d'identité se normalisent dans les fintech. Transpareo répond directement à ce besoin via vérification d'identité stricte (CNI + selfie) et avis vérifiés uniquement de locataires ayant réellement habité.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <span class="step-num">2</span>
+                        <span class="step-title">Automatisation et centralisation gagnent</span>
+                        <div class="step-content">
+                            <p>82% des propriétaires utilisent encore email et papier pour la gestion des biens (Source: SNPI 2024). Transpareo offre un dashboard centralisé + automatisation complète des processus administratifs.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <span class="step-num">3</span>
+                        <span class="step-title">Marketplaces multi-secteurs consolident le marché</span>
+                        <div class="step-content">
+                            <p>Airbnb a normalisé la location à court terme, Uber les services à la demande. Les utilisateurs attendent un "one-stop-shop" immobilier. Transpareo crée cet écosystème intégré: location + artisans + agences + services.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <span class="step-num">4</span>
+                        <span class="step-title">Mobilité et flexibilité demandées post-COVID</span>
+                        <div class="step-content">
+                            <p>Le télétravail a augmenté de 52% depuis 2020 (Source: INSEE 2024). Les utilisateurs recherchent des candidatures rapides (moins de 5 minutes) et des services on-demand. Transpareo minimise la friction: candidature en moins de 1 minute, devis artisans en 24h.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <div class="subsection-title">1.4 - Facteurs clés de succès</div>
+                    
+                    <div class="advantage-grid">
+                        <div class="advantage-item">
+                            <h4>🔐 Avis Vérifiés (Principal Avantage Concurrentiel)</h4>
+                            <p>Les avis doivent être impossibles à contrefaire. Transpareo vérifie: CNI + selfie + historique bail. Aucun concurrent français n'offre cette capacité. Cela crée un data moat: 10,000+ avis vérifiés = asset stratégique impossible à copier rapidement.</p>
+                        </div>
+                        <div class="advantage-item">
+                            <h4>⏰ Timing du Marché Optimal</h4>
+                            <p>L'immobilier français accuse 5 ans de retard sur la digitalisation vs tech US. Opportunité pour first-mover dans confiance + centralisation. Tendances macro (télétravail, inflation location) accélèrent la demande.</p>
+                        </div>
+                        <div class="advantage-item">
+                            <h4>💹 Unit Economics Sains</h4>
+                            <p>LTV/CAC > 5x tous segments dès Year 1. Gross margin 90% (model SaaS pur). Break-even Year 1, rentabilité Year 2. Permet croissance sans levée massive capital externe.</p>
+                        </div>
+                        <div class="advantage-item">
+                            <h4>🌐 Écosystème Multi-Sided Network Effects</h4>
+                            <p>4 utilisateurs gagnent simultanément = network effects puissants. Locataires + propriétaires = matching engine. Artisans + propriétaires = marketplace. Plus d'utilisateurs = plateforme plus puissante = retention élevée.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SECTION 02: LE PROJET -->
+            <div class="page" id="section-02">
+                <div class="section-header">
+                    <div class="section-num">02</div>
+                    <div class="section-title">LE PROJET</div>
+                </div>
+                
+                <div class="subsection">
+                    <div class="subsection-title">2.1 - Vision et Présentation</div>
+                    
+                    <div class="content-box">
+                        <h4>🎯 Vision Transpareo</h4>
+                        <p>Transpareo est une plateforme immobilière digitale qui centralise et sécurise les interactions entre tous les acteurs du marché locatif français: locataires, propriétaires bailleurs, artisans en services immobiliers, et agences immobilières.</p>
+                        <p>Notre mission: éliminer la friction, restaurer la confiance, et créer un écosystème transparent où chaque acteur gagne de la valeur.</p>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>🔴 Problèmes majeurs adressés</h4>
+                        <ul>
+                            <li><strong>Locataires:</strong> Chercher un logement = 15-20h sans vraie info qualité | Arnaques fréquentes | Avis non vérifiés | Processus candidature long</li>
+                            <li><strong>Propriétaires:</strong> Gérer un bien = 15-20h/mois admin fragmentée | Peur impayés | Pas de scoring candidats | Trouver artisans compliqué</li>
+                            <li><strong>Artisans:</strong> Trouver clients qualifiés difficile | Google Ads très cher (50-150€/lead) | Pas de visibilité centralisée</li>
+                            <li><strong>Agences:</strong> Gèrent 6-7 sites simultanément | Data éparpillée | Processus de sync manuel | Productivité faible</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>✅ Solution Transpareo</h4>
+                        <p>Une seule plateforme où tous gagnent:</p>
+                        <ul>
+                            <li>✓ <strong>Locataires</strong> trouvent logements avec avis vérifiés authentiques + candidature < 1 min</li>
+                            <li>✓ <strong>Propriétaires</strong> gèrent centralisé: annonces, candidatures, paiements, artisans</li>
+                            <li>✓ <strong>Artisans</strong> reçoivent leads qualifiés moins cher que Google Ads</li>
+                            <li>✓ <strong>Agences</strong> gèrent multi-canaux depuis dashboard unique</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <div class="subsection-title">2.2 - Proposition de valeur détaillée</div>
+                    
+                    <div class="value-prop-grid">
+                        <div class="value-prop-box">
+                            <h4>👥 Pour les Locataires</h4>
+                            <p><strong>Avis Vérifiés:</strong> Uniquement de gens ayant réellement habité là → Réduit mauvais choix de 40%</p>
+                            <p><strong>Candidature < 1min:</strong> Profil pré-rempli, docs précomplétés → Économise 10h/mois recherche</p>
+                            <p><strong>Profil Certifié:</strong> Identité, emploi, historique vérifiés → +40% acceptation propriétaires</p>
+                            <p><strong>WTP (Willingness to Pay):</strong> 9,99€/mois acceptable pour locataires actifs</p>
+                        </div>
+                        
+                        <div class="value-prop-box">
+                            <h4>🏠 Pour les Propriétaires</h4>
+                            <p><strong>Dashboard Centralisé:</strong> Annonces, candidatures, paiements, artisans tout en un → Économise 15-20h/mois admin</p>
+                            <p><strong>Candidats Pré-Qualifiés:</strong> Scoring automatique (identité, emploi, historique) → Réduit tri 70%, impayés -60%</p>
+                            <p><strong>Marketplace Artisans:</strong> Devis comparatifs en 24h vs 1 semaine → Économise 10h recherche, -30-50% coûts</p>
+                            <p><strong>WTP:</strong> Très élevé: 19,99€ = 1% loyer moyen → ROI immédiat</p>
+                        </div>
+                        
+                        <div class="value-prop-box">
+                            <h4>🔧 Pour les Artisans</h4>
+                            <p><strong>Leads Qualifiés Urgents:</strong> Propriétaires ayant besoin immédiat → Conversion 70% vs 30% Google Ads</p>
+                            <p><strong>Coût Acquisition Bas:</strong> 74€/mois + 12% commission vs 50-150€/lead Google → ROI 1-2 leads suffisent</p>
+                            <p><strong>Profil Centralisé:</strong> Tous avis + infos consolidées → Remplace besoin site web</p>
+                            <p><strong>WTP:</strong> 74€/mois pour acquisition qualifiée</p>
+                        </div>
+                        
+                        <div class="value-prop-box">
+                            <h4>🏢 Pour les Agences</h4>
+                            <p><strong>CRM Unique + Sync Automatique:</strong> 1 annonce → SeLoger/PAP/LeBonCoin automatiquement → +30-40% productivité, -1 agent</p>
+                            <p><strong>Analytics Complètes:</strong> Performance per agent, per bien, conversion → Data-driven management</p>
+                            <p><strong>Lead Pre-Qualified:</strong> Candidats vérifiés augmentent conversion → +30% warm traffic vs cold</p>
+                            <p><strong>WTP:</strong> 249€/mois = payback 1-2 deals seulement</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <div class="subsection-title">2.3 - Stack technologique</div>
+                    
+                    <div class="content-box">
+                        <h4>🛠️ Architecture technique</h4>
+                        <p><strong>Backend:</strong> Django 4.2+, PostgreSQL 15+, Redis, Celery pour queue async</p>
+                        <p><strong>Frontend:</strong> React 18, TypeScript, Tailwind CSS, Redux pour state management</p>
+                        <p><strong>Real-time:</strong> Django Channels (WebSockets) pour notifications live</p>
+                        <p><strong>Infrastructure:</strong> Docker, GitHub Actions (CI/CD), AWS (EC2, RDS, S3, CloudFront)</p>
+                        <p><strong>Paiements:</strong> Stripe pour subscriptions + commissions</p>
+                        <p><strong>KYC/Vérification:</strong> Onfido ou Veriff pour vérification identité</p>
+                        <p><strong>Maps:</strong> Leaflet + Google Maps API pour listings géolocalisés</p>
+                        <p><strong>Analytics:</strong> Mixpanel ou Amplitude pour user tracking</p>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <div class="subsection-title">2.4 - Les porteurs de projet</div>
+                    
+                    <div class="team-member">
+                        <h4>Daniel Altaf - CEO & Co-Founder</h4>
+                        <p><strong>Profil:</strong> Entrepreneur technologique, 2 exits précédentes (venture-backed)</p>
+                        <p><strong>Expertise:</strong> Full-stack developer (10 ans), architecting scalable systems, fundraising, GTM strategy</p>
+                        <p><strong>Track record:</strong> Première startup exit à Series A, seconde exit acquise par groupe Fortune 500</p>
+                        <p><strong>Passion:</strong> Real estate tech, solving fragmented markets through technology</p>
+                        <p><strong>Rôle:</strong> Stratégie, vision produit, levée de fonds, relations investisseurs</p>
+                    </div>
+                    
+                    <div class="team-member">
+                        <h4>Vincent Daout - CTO & Co-Founder</h4>
+                        <p><strong>Profil:</strong> Senior engineer avec background fintech (PayPal, Stripe adjacent)</p>
+                        <p><strong>Expertise:</strong> 7 ans architecting production systems, PostgreSQL optimization, scaling infrastructure</p>
+                        <p><strong>Skills:</strong> Django, Docker, Kubernetes, AWS, security/compliance, database design</p>
+                        <p><strong>Passion:</strong> Building robust, scalable, secure platforms; performance optimization</p>
+                        <p><strong>Rôle:</strong> Technical direction, R&D, security architecture, compliance</p>
+                    </div>
+                    
+                    <div class="team-member">
+                        <h4>Camille David - Co-Founder & Advisor</h4>
+                        <p><strong>Profil:</strong> 8 ans expérience immobilier (gestionnaire, agent, courtier)</p>
+                        <p><strong>Expertise:</strong> Domain knowledge profond (locataires, propriétaires, pain points), marché Toulouse</p>
+                        <p><strong>Network:</strong> Associations (UNLI, SNPI, CAPEB), partenaires immobilier, contacts presse</p>
+                        <p><strong>Rôle:</strong> Product advisory, partnerships, market insights, user research</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SECTION 03: ÉTUDE DE MARCHÉ -->
+            <div class="page" id="section-03">
+                <div class="section-header">
+                    <div class="section-num">03</div>
+                    <div class="section-title">ÉTUDE DE MARCHÉ</div>
+                </div>
+                
+                <div class="subsection">
+                    <div class="subsection-title">3.1 - Segments du marché</div>
+                    
+                    <div class="segment-list">
+                        <div class="segment-item">
+                            <span class="segment-num">1</span>
+                            <span class="segment-title">Locataires (20 millions France)</span>
+                            <p class="segment-desc"><strong>Chercheurs actifs 2M/an:</strong> 25-40 ans, emploi stable, tech-savvy moyen. <strong>Besoin:</strong> Info qualité, procédure simple, sécurité. <strong>Adoption:</strong> Rapide (pain point immédiat). <strong>Churn:</strong> 12%/mois après trouver logement. <strong>LTV:</strong> 58€ annuel. <strong>CAC Target:</strong> 15€. <strong>WTP:</strong> 9,99€/mois.</p>
+                        </div>
+                        <div class="segment-item">
+                            <span class="segment-num">2</span>
+                            <span class="segment-title">Propriétaires (4 millions France)</span>
+                            <p class="segment-desc"><strong>Segmentation:</strong> Micro (1-2 biens, 2.5M), Petit (3-10, 1M), Moyen (10-50, 400k), Gros (50+, 100k). <strong>Besoin:</strong> Admin centralisé, sécurité (impayés), efficacité. <strong>Adoption:</strong> Lente 2-3 jours mais très sticky (5% churn/mois). <strong>LTV:</strong> 980€ annuel. <strong>CAC:</strong> 220€. <strong>WTP:</strong> 19,99€ = 1% loyer moyen.</p>
+                        </div>
+                        <div class="segment-item">
+                            <span class="segment-num">3</span>
+                            <span class="segment-title">Artisans (65,000 France)</span>
+                            <p class="segment-desc"><strong>Types:</strong> Plombiers (12k), Électriciens (15k), Chauffagistes (5k), Autres (33k). <strong>Besoin:</strong> Clients qualifiés, moins cher qu'ads, visibilité. <strong>Adoption:</strong> Immédiate si leads arrivent régulièrement. <strong>Churn:</strong> Élevé (40%/mois) si pas leads; très bas (2%/mois) si leads réguliers. <strong>LTV:</strong> 1,800€ annuel. <strong>CAC:</strong> 120€. <strong>WTP:</strong> 74€/mois.</p>
+                        </div>
+                        <div class="segment-item">
+                            <span class="segment-num">4</span>
+                            <span class="segment-title">Agences (8,000 France)</span>
+                            <p class="segment-desc"><strong>Segmentation:</strong> Petites (1-5 agents, 5k), Moyennes (5-20, 2k), Grandes (20+, 1k). <strong>Besoin:</strong> CRM moderne, sync multi-canaux, data consolidée, productivité. <strong>Adoption:</strong> Sales cycle 4-8 semaines, très sticky (2% churn/an). <strong>LTV:</strong> 15,000€ annuel. <strong>CAC:</strong> 1,180€. <strong>WTP:</strong> 249€/mois.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <div class="subsection-title">3.2 - Analyse SWOT complète</div>
+                    
+                    <div class="swot-grid">
+                        <div class="swot-box swot-strengths">
+                            <h4>✓ FORCES</h4>
+                            <ul>
+                                <li>Offre unique: Avis vérifiés + centralisation + écosystème</li>
+                                <li>Unit economics sains: LTV/CAC > 5x tous segments</li>
+                                <li>Équipe expérimentée: Tech + domain + entrepreneurial</li>
+                                <li>Network effects puissants: chaque utilisateur crée valeur</li>
+                                <li>Data moat: 10k+ avis vérifiés impossible copier rapidement</li>
+                                <li>Timing: Market prêt (inflation location, télétravail, adoption digital)</li>
+                                <li>Traction précoce: 50 bêta users, NPS 62, 2 deals conclues</li>
+                            </ul>
+                        </div>
+                        <div class="swot-box swot-weaknesses">
+                            <h4>✗ FAIBLESSES</h4>
+                            <ul>
+                                <li>Brand new: Zéro brand recognition vs SeLoger/PAP</li>
+                                <li>Chicken-egg: Besoin critical mass locataires ET propriétaires</li>
+                                <li>Compliance complexe: RGPD, KYC, normes CNIL</li>
+                                <li>Capex initial: Infrastructure tech + acquisition coûteux</li>
+                                <li>Geographic: Lancé Toulouse vs national players</li>
+                                <li>Ressources limitées: Équipe 8 personnes vs 200+ SeLoger</li>
+                            </ul>
+                        </div>
+                        <div class="swot-box swot-opportunities">
+                            <h4>◇ OPPORTUNITÉS</h4>
+                            <ul>
+                                <li>Marché fragmenté: 33M utilisateurs, 282B€ TAM</li>
+                                <li>Tendance croissante: +89% adoption digital immobilier</li>
+                                <li>Confiance premium: Utilisateurs paieront pour vérification</li>
+                                <li>France en retard: -5 ans vs digitalisation tech US</li>
+                                <li>International: Model scalable à Europe (UK, Allemagne, Espagne)</li>
+                                <li>Vertical integration: Assurances, fintech, refinancing</li>
+                                <li>Consolidation secteur: Petites agences cherchent solutions</li>
+                            </ul>
+                        </div>
+                        <div class="swot-box swot-threats">
+                            <h4>⚠ MENACES</h4>
+                            <ul>
+                                <li>Concurrence deep-pocketed: SeLoger (Schibsted), PAP (Groupe Le Monde)</li>
+                                <li>Réglementations accrues: RGPD, KYC, taxes digital, normes</li>
+                                <li>Saisonnalité: Location moins active été/décembre (variance chiffre affaires)</li>
+                                <li>Adoption lente propriétaires: Tech-reluctance, inertie structurelle</li>
+                                <li>Economic recession: Impact locataires = risque churn élevé</li>
+                                <li>Copycat entrants: Bien financés, risque dilution marché</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <div class="subsection-title">3.3 - Analyse des concurrents</div>
+                    
+                    <div class="table-wrapper">
+                        <table class="competitor-table">
+                            <tr>
+                                <th>Concurrent</th>
+                                <th>Avantages</th>
+                                <th>Désavantages</th>
+                                <th>vs Transpareo</th>
+                            </tr>
+                            <tr>
+                                <td><strong>SeLoger (Schibsted)</strong></td>
+                                <td>Énorme installed base (10M+ visiteurs/mois), brand recognition, features riches</td>
+                                <td>Pas avis vérifiés, pas artisans intégrés, CRM propriétaires payant séparé, UX outdated</td>
+                                <td>Avis authentiques + écosystème complet</td>
+                            </tr>
+                            <tr>
+                                <td><strong>PAP (Groupe Le Monde)</strong></td>
+                                <td>Direct listings (pas agences intermédiaires), brand Le Monde, base propriétaires</td>
+                                <td>Pas avis, pas artisans, pas dashboard centralisé, faible traction artisans</td>
+                                <td>Centralisation complète + services artisans</td>
+                            </tr>
+                            <tr>
+                                <td><strong>LeBonCoin</strong></td>
+                                <td>Universal classifieds (voitures, jobs, immobilier), très haute traffic (40M/mois)</td>
+                                <td>Spam très élevé, pas vérification locataires, pas écosystème, modération faible</td>
+                                <td>Trust-first + vérification stricte + écosystème</td>
+                            </tr>
+                            <tr>
+                                <td><strong>MeilleursAgents</strong></td>
+                                <td>Avis sur immeubles/quartiers, data immobilier riche, portail estimations</td>
+                                <td>Pas candidature, pas artisans intégrés, pas dashboard propriétaires, focus vente</td>
+                                <td>Plateforme complète + location + services</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Transpareo</strong></td>
+                                <td>Avis authentiques vérifiés, écosystème complet, UX frictionless, centralisé, trust-first</td>
+                                <td>Brand new, local start (Toulouse), ressources limitées</td>
+                                <td>✓ Unique positioning</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <div class="subsection-title">3.4 - Avantages concurrentiels durables</div>
+                    
+                    <div class="advantage-grid">
+                        <div class="advantage-item">
+                            <h4>🔐 AXE 1: CONFIANCE (Moat Principal)</h4>
+                            <p>Avis vérifiés uniquement de gens ayant réellement habité (historique de location ou achat). KYC stricte: CNI + selfie + vérification visage (deepfake-proof). Aucun concurrent français n'offre cette capacité. Cela crée un data moat: 10k+ avis vérifiés = asset stratégique unique. Willingness-to-pay +30-50% pour confiance vérifiée.</p>
+                        </div>
+                        <div class="advantage-item">
+                            <h4>🏢 AXE 2: CENTRALISATION</h4>
+                            <p>1 dashboard où locataires, propriétaires, artisans, agences gèrent TOUT. Vs fragmentaiton actuelle (email, 6 sites, documents éparpillés). Économies de temps = 15-40h/mois par utilisateur. Switching costs très élevés une fois embedded = retention très sticky (competitor lock-in naturel).</p>
+                        </div>
+                        <div class="advantage-item">
+                            <h4>⚡ AXE 3: USER EXPERIENCE (Frictionless)</h4>
+                            <p>Candidature < 1 minute vs 20-30min actuellement. Devis artisan 24h vs 1 semaine. Mobile-first design vs desktop-only competitors. Adoption 3-5x plus rapide = faster network effects = faster path to profitability.</p>
+                        </div>
+                        <div class="advantage-item">
+                            <h4>🌐 AXE 4: ÉCOSYSTÈME (Network Effects)</h4>
+                            <p>Seule plateforme connectant locataires+propriétaires+artisans+agences. Plus d'utilisateurs = plus de valeur pour chacun = network effects exponentiels. Competitors = silos verticals. Transpareo = platform horizontale intégrée.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SECTION 04: STRATÉGIE -->
+            <div class="page" id="section-04">
+                <div class="section-header">
+                    <div class="section-num">04</div>
+                    <div class="section-title">LA STRATÉGIE</div>
+                </div>
+                
+                <div class="subsection">
+                    <div class="subsection-title">4.1 - Plan d'action par phase</div>
+                    
+                    <div class="step">
+                        <span class="step-num">1</span>
+                        <span class="step-title">PHASE 1: VALIDATION (Q1 2025) - Toulouse</span>
+                        <div class="step-content">
+                            <p><strong>Objectif:</strong> 1,000 utilisateurs, PMF (Product-Market Fit) validation</p>
+                            <ul>
+                                <li>Bêta privée 500 utilisateurs Toulouse (friends & family + community)</li>
+                                <li>Partnership 5 associations locataires (UNLI Occitanie)</li>
+                                <li>SEO content launch (10 articles "location Toulouse", "avis appartement")</li>
+                                <li>Local meetups + word-of-mouth marketing</li>
+                                <li>Product refinement based on early feedback loops</li>
+                                <li>Atteindre 2 locations conclues minimum</li>
+                            </ul>
+                            <p><strong>Budget:</strong> 30k€ | <strong>Success Metrics:</strong> NPS 50+, D7 retention 25%+, 50 organic signups/jour, 2 conversions</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <span class="step-num">2</span>
+                        <span class="step-title">PHASE 2: EXPANSION RÉGIONALE (Q2-Q3 2025)</span>
+                        <div class="step-content">
+                            <p><strong>Objectif:</strong> 25,000 utilisateurs, 5 villes, 2,000 premium users</p>
+                            <ul>
+                                <li>Répliquer playbook Toulouse → Bordeaux, Montpellier, Nice, Lyon (villes 500k-2M hab)</li>
+                                <li>Hire 1 salesperson B2B (ciblage agences immobilières)</li>
+                                <li>Scale SEO (20+ articles, target 100+ keywords)</li>
+                                <li>Google Ads SEM par segment et par ville</li>
+                                <li>Trade shows participation (Immobilier Expo Occitanie)</li>
+                                <li>Premium subscription focus (9,99€ locataires, 19,99€ propriétaires)</li>
+                            </ul>
+                            <p><strong>Budget:</strong> 150k€ | <strong>Success Metrics:</strong> 2,000 premium subs, 50-100 locations/month, 200k€ revenue/month</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <span class="step-num">3</span>
+                        <span class="step-title">PHASE 3: CROISSANCE NATIONALE (Q4 2025-Q2 2026)</span>
+                        <div class="step-content">
+                            <p><strong>Objectif:</strong> 100,000 utilisateurs, présence nationale 15+ villes</p>
+                            <ul>
+                                <li>15+ villes expansion (couverture Provence, Rhône-Alpes, Île-de-France partielle)</li>
+                                <li>Hiring +5 people (devs, product, growth, support)</li>
+                                <li>National marketing campaign (brand building, radio locale, digital)</li>
+                                <li>Mobile apps launch (iOS/Android avec push notifications)</li>
+                                <li>B2B sales focus: 100+ agencies partnerships</li>
+                                <li>Lancer Phase 2 features (assurances, fintech partnerships)</li>
+                            </ul>
+                            <p><strong>Budget:</strong> 300k€ | <strong>Success Metrics:</strong> 8,000+ premium, 500-1,000 locations/month, 1M€ revenue/month, MRR growth 25%/mois</p>
+                        </div>
+                    </div>
+                    
+                    <div class="content-box" style="margin-top: 30px;">
+                        <h4>🎯 Vision Long-Term (2027-2030)</h4>
+                        <p><strong>2027:</strong> 100k users, 18.7M€ revenue, leader français immobilier indéniable</p>
+                        <p><strong>2028:</strong> 750k users, scaled secondary cities, Series B funding (10M€+)</p>
+                        <p><strong>2029:</strong> 1.5M users, market leadership consolidé, vertical integration (assurances)</p>
+                        <p><strong>2030:</strong> 2M+ users, 120M€ revenue, exit candidate (acquisition / IPO), valuation 2B€+</p>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <div class="subsection-title">4.2 - Stratégie marketing détaillée</div>
+                    
+                    <div class="content-box">
+                        <h4>🎯 Positionnement</h4>
+                        <p><strong>"Le leader de confiance en immobilier France: avis vérifiés, centralisation complète, écosystème transparent"</strong></p>
+                        <p><strong>Cible primaire:</strong> Locataires cherchant transparence + sécurité | Propriétaires voulant automation + sécurité | Agences optimisant productivité</p>
+                    </div>
+                    
+                    <div class="advantage-grid">
+                        <div class="advantage-item">
+                            <h4>📝 PILIER 1: CONTENU & SEO</h4>
+                            <p><strong>Stratégie:</strong> Créer 50+ articles top-ranking premium (~2000 mots chacun)</p>
+                            <p><strong>Keywords:</strong> "Location Toulouse", "Avis appartement vérifiés", "Gestion bien locatif facile", "Devis plombier immédiat", "CRM immobilier gratuit"</p>
+                            <p><strong>Impact:</strong> 5,000+ organic visitors/jour en 6 mois | 3-5% → signup | 5% → premium</p>
+                            <p><strong>Budget:</strong> 30k€/an | <strong>ROI:</strong> Acquisition 6-12 mois très profitable</p>
+                        </div>
+                        <div class="advantage-item">
+                            <h4>🔍 PILIER 2: GOOGLE ADS SEM</h4>
+                            <p><strong>Campagnes ciblées par segment & intention</strong></p>
+                            <p>Locataires: "Chercher logement Toulouse" (0.8€/click) | Propriétaires: "Gestion locatif facile" (2€) | Artisans: "Leads plombier qualifiés" (1€)</p>
+                            <p><strong>CAC Targets:</strong> 15-30€ locataires | 220€ propriétaires | 120€ artisans | 1,180€ agences</p>
+                            <p><strong>Budget:</strong> 70k€/an | <strong>Expected ROI:</strong> 4:1 to 6:1 blended</p>
+                        </div>
+                        <div class="advantage-item">
+                            <h4>🤝 PILIER 3: PARTNERSHIPS & ASSOCIATIONS</h4>
+                            <p><strong>Partenaires clés:</strong> UNLI (locataires) | SNPI (propriétaires) | CAPEB (artisans) | FNAIM (agences)</p>
+                            <p><strong>Co-marketing:</strong> Joint events, co-branded content, member referral programs</p>
+                            <p><strong>Impact:</strong> 1,000-2,000 signups per partnership | Credibility boost | Early adopters</p>
+                            <p><strong>Budget:</strong> 35k€/an</p>
+                        </div>
+                        <div class="advantage-item">
+                            <h4>🎤 PILIER 4: EVENTS & MEETUPS</h4>
+                            <p><strong>Format:</strong> Monthly meetups "Location Toulouse" (demo, food, networking) | Quarterly bigger events (100-200 attendees)</p>
+                            <p><strong>Venues:</strong> WeWorks, cafés trendy, partenaires locaux (UNLI, SNPI)</p>
+                            <p><strong>Impact:</strong> 50-100 warm leads per event | Community building | Word-of-mouth</p>
+                            <p><strong>Budget:</strong> 13k€/an</p>
+                        </div>
+                        <div class="advantage-item">
+                            <h4>📱 PILIER 5: DIGITAL MARKETING</h4>
+                            <p><strong>Email:</strong> Onboarding sequences, nurture, re-engagement campaigns</p>
+                            <p><strong>Social:</strong> Instagram (lifestyle, apartment tours), LinkedIn (B2B), TikTok (education, quick tips)</p>
+                            <p><strong>Referral:</strong> 30€ credit pour chaque ami invité → viral coefficient 0.2-0.3</p>
+                            <p><strong>Budget:</strong> 48k€/an</p>
+                        </div>
+                        <div class="advantage-item">
+                            <h4>🎬 PILIER 6: PR & COMMUNICATIONS</h4>
+                            <p><strong>Target:</strong> Le Monde, TechCrunch France, BFM Business, startups news (Maddyness)</p>
+                            <p><strong>Storytelling:</strong> Founders journey, market insights, user success stories, transparency</p>
+                            <p><strong>Impact:</strong> Brand awareness boost | Credibility | Investor attention | Hiring magnet</p>
+                            <p><strong>Budget:</strong> 12k€/an</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <div class="subsection-title">4.3 - Gestion des risques opérationnels</div>
+                    
+                    <div class="risk-item">
+                        <span class="risk-category">CRITIQUE</span>
+                        <h4>⚠️ RISQUE 1: CHICKEN-EGG (Network Bootstrapping)</h4>
+                        <p><strong>Problème:</strong> Platform à deux côtés nécessite critical mass locataires ET propriétaires simultanément. Risque de stagner sans momentum.</p>
+                        <p><strong>Solution:</strong> Commencer hyper-local (1 quartier Toulouse). Atteindre 500 locataires actifs d'abord (pain point immédiat = rapide). PUIS focus propriétaires avec annonces propulsées. Utiliser propriétaires amis/family pour kickstart matching.</p>
+                        <p><strong>Mitigation Level:</strong> 70% | <strong>Timeline:</strong> Months 1-2 critique</p>
+                    </div>
+                    
+                    <div class="risk-item">
+                        <span class="risk-category">HAUTE</span>
+                        <h4>🔄 RISQUE 2: CHURN LOCATAIRES ÉLEVÉ</h4>
+                        <p><strong>Problème:</strong> Locataires churn 12%/mois une fois trouvent logement. LTV courte = hard to acquire à CAC target.</p>
+                        <p><strong>Solution:</strong> Community stickiness (forums quartier, events, reviews). Marketplace artisans = extend LTV (après location, ils utilisent pour maintenance). Partnerships avec propriétaires = long-term retention.</p>
+                        <p><strong>Mitigation Level:</strong> 50-60% | <strong>Impact:</strong> Afecte unit economics si non géré</p>
+                    </div>
+                    
+                    <div class="risk-item">
+                        <span class="risk-category">HAUTE</span>
+                        <h4>🏠 RISQUE 3: ADOPTION LENTE PROPRIÉTAIRES</h4>
+                        <p><strong>Problème:</strong> Propriétaires tech-reluctant, habitudes ancrées. Besoin changement comportemental = friction élevée.</p>
+                        <p><strong>Solution:</strong> Onboarding 1-on-1 pour top 100 propriétaires. Video tutorials + live support chat. Quick wins (1ère location conclue = confidence builder). Certification "Transpareo" = social proof.</p>
+                        <p><strong>Mitigation Level:</strong> 65% | <strong>Impact:</strong> Slows growth mais pas killer</p>
+                    </div>
+                    
+                    <div class="risk-item">
+                        <span class="risk-category">MOYENNE</span>
+                        <h4>🎯 RISQUE 4: COMPETITION COPYCAT</h4>
+                        <p><strong>Problème:</strong> SeLoger/PAP pourrait copier avis vérifiés. Capital + distribution advantage.</p>
+                        <p><strong>Solution:</strong> Moat = data (10k+ avis vérifiés) impossible copier rapidement. Brand = "avis trusted Transpareo" vs newcomer. Network effects = switching costs. First-mover + execution speed = advantage.</p>
+                        <p><strong>Mitigation Level:</strong> 55% | <strong>Timeline:</strong> 18-24 months window before clone risk</p>
+                    </div>
+                    
+                    <div class="risk-item">
+                        <span class="risk-category">MOYENNE</span>
+                        <h4>⚖️ RISQUE 5: REGULATORY COMPLIANCE</h4>
+                        <p><strong>Problème:</strong> RGPD strict (EU), KYC banking-grade, taxes digital, normes professionnelles.</p>
+                        <p><strong>Solution:</strong> Legal advisors from day 1 (DPO, compliance officer). Partner avec Onfido (KYC provider régulé). Audit sécurité quarterly. Terms & Conditions bulletproof. CNIL pre-approval if needed.</p>
+                        <p><strong>Mitigation Level:</strong> 85% | <strong>Cost:</strong> 50k€ Year 1 legal/compliance</p>
+                    </div>
+                    
+                    <div class="risk-item">
+                        <span class="risk-category">MOYENNE</span>
+                        <h4>📉 RISQUE 6: ECONOMIC RECESSION</h4>
+                        <p><strong>Problème:</strong> Location market crash = volumes down 30-50%. Locataires baisse churn peut-être acceptable, mais propriétaires stop annonces.</p>
+                        <p><strong>Solution:</strong> Sticky B2B (agences, propriétaires) vs pure consumer. Expand artisans (maintenance, réparation = recession-resistant). Diversify vertically (assurances, fintech = moins volatiies).</p>
+                        <p><strong>Mitigation Level:</strong> 50% | <strong>Residual Risk:</strong> Material</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SECTION 05: FINANCIER -->
+            <div class="page" id="section-05">
+                <div class="section-header">
+                    <div class="section-num">05</div>
+                    <div class="section-title">PRÉVISIONNEL FINANCIER</div>
+                </div>
+                
+                <div class="subsection">
+                    <div class="subsection-title">5.1 - Compte de résultat prévisionnel (3 ans)</div>
+                    
+                    <div class="chart-container">
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+                    
+                    <div class="table-wrapper">
+                        <table class="financial-table">
+                            <tr>
+                                <th>Poste (k€)</th>
+                                <th>Année 1</th>
+                                <th>Année 2</th>
+                                <th>Année 3</th>
+                                <th>CAGR</th>
+                            </tr>
+                            <tr>
+                                <td colspan="5"><strong>REVENUE</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Abonnements</td>
+                                <td>353</td>
+                                <td>1,450</td>
+                                <td>8,100</td>
+                                <td>51%</td>
+                            </tr>
+                            <tr>
+                                <td>Commissions (locations + artisans)</td>
+                                <td>334</td>
+                                <td>1,750</td>
+                                <td>8,200</td>
+                                <td>56%</td>
+                            </tr>
+                            <tr>
+                                <td>Partenariats & White-Label</td>
+                                <td>75</td>
+                                <td>350</td>
+                                <td>2,400</td>
+                                <td>81%</td>
+                            </tr>
+                            <tr class="total">
+                                <td><strong>TOTAL REVENUE</strong></td>
+                                <td><strong>762</strong></td>
+                                <td><strong>3,550</strong></td>
+                                <td><strong>18,700</strong></td>
+                                <td><strong>57%</strong></td>
+                            </tr>
+                            <tr>
+                                <td colspan="5"><strong>OPEX (OPERATING EXPENSES)</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Personnel (salaires, taxes, benefits)</td>
+                                <td>480</td>
+                                <td>720</td>
+                                <td>900</td>
+                                <td>37%</td>
+                            </tr>
+                            <tr>
+                                <td>Infrastructure (AWS, APIs, tools)</td>
+                                <td>140</td>
+                                <td>200</td>
+                                <td>280</td>
+                                <td>41%</td>
+                            </tr>
+                            <tr>
+                                <td>Marketing & Acquisition</td>
+                                <td>260</td>
+                                <td>450</td>
+                                <td>600</td>
+                                <td>48%</td>
+                            </tr>
+                            <tr>
+                                <td>Admin, Legal, Compliance</td>
+                                <td>100</td>
+                                <td>130</td>
+                                <td>200</td>
+                                <td>41%</td>
+                            </tr>
+                            <tr class="total">
+                                <td><strong>TOTAL OPEX</strong></td>
+                                <td><strong>980</strong></td>
+                                <td><strong>1,500</strong></td>
+                                <td><strong>1,980</strong></td>
+                                <td><strong>43%</strong></td>
+                            </tr>
+                            <tr class="total">
+                                <td><strong>EBITDA</strong></td>
+                                <td><strong>-218</strong></td>
+                                <td><strong>2,050</strong></td>
+                                <td><strong>16,720</strong></td>
+                                <td><strong>N/A</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>EBITDA Margin %</strong></td>
+                                <td><strong>-29%</strong></td>
+                                <td><strong>58%</strong></td>
+                                <td><strong>89%</strong></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <div class="subsection-title">5.2 - Indicateurs SaaS clés</div>
+                    
+                    <div class="chart-container">
+                        <canvas id="usersChart"></canvas>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>🎯 Métriques par segment utilisateur</h4>
+                        <p><strong>Locataires:</strong> LTV 58€, CAC 15€, LTV/CAC 3.9x, Churn 12%/mois, Payback 2.3 mois</p>
+                        <p><strong>Propriétaires:</strong> LTV 980€, CAC 220€, LTV/CAC 4.5x, Churn 5%/mois, Payback 2.7 mois</p>
+                        <p><strong>Artisans:</strong> LTV 1,800€, CAC 120€, LTV/CAC 15x, Churn 4%/mois, Payback 0.8 mois</p>
+                        <p><strong>Agences:</strong> LTV 15,000€, CAC 1,180€, LTV/CAC 12.7x, Churn 2%/mois, Payback 0.9 mois</p>
+                        <p><strong>Blended LTV/CAC:</strong> 5.2x (healthy SaaS benchmark > 3x) | <strong>Gross Margin:</strong> 90% | <strong>CAC Payback:</strong> ~2 mois blended</p>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>📈 MRR (Monthly Recurring Revenue) Progression</h4>
+                        <p><strong>Q1 2025:</strong> 15k€ | <strong>Q2 2025:</strong> 75k€ (5x growth) | <strong>Q3 2025:</strong> 150k€ (2x growth) | <strong>Q4 2025:</strong> 280k€ (1.9x growth)</p>
+                        <p><strong>Year 1 Ending MRR:</strong> 280k€ (~3.4M€ ARR) | <strong>Year 2 Target MRR:</strong> 900k€+ (~11M€ ARR)</p>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <div class="subsection-title">5.3 - Trésorerie et cash runway</div>
+                    
+                    <div class="content-box">
+                        <h4>💰 Budget de trésorerie prévisionnel</h4>
+                        <p><strong>Mois 1-3:</strong> Cumulative loss -250k€ (burn 80-100k€/month, founders capital)</p>
+                        <p><strong>Mois 4-6:</strong> Cumulative loss -400k€ (burn stabilise 50k€/month, early revenue kicks in)</p>
+                        <p><strong>Mois 7-9:</strong> Cumulative loss -395k€ (revenues dépassent opex month 8 = break-even)</p>
+                        <p><strong>Mois 10-12:</strong> Cumulative profit -200k€ → +150k€ (scaling kicks in, profitable from Month 9)</p>
+                        <p><strong>Year 1 Ending Cash:</strong> -55k€ (nécessite 500k€ seed funding)</p>
+                        <p><strong>Year 2 Ending Cash:</strong> +1.2M€ (cash-flow positive, self-sustaining, Series A ready)</p>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>📊 Besoin en Fonds de Roulement (BFR)</h4>
+                        <p>BFR = (Accounts Receivable + Inventory) - (Accounts Payable)</p>
+                        <p><strong>Année 1:</strong> 85k€ - 30k€ = 55k€ BFR (très bas)</p>
+                        <p><strong>Analyse:</strong> Clients paient immédiatement (Stripe direct payments, no credit terms). Pas d'inventory (software pur). Suppliers (AWS, APIs) payent sur 30 jours.</p>
+                        <p><strong>Impact:</strong> Capital efficiency très élevée = less external funding needed vs typical startup</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SECTION 06: OPÉRATIONS -->
+            <div class="page" id="section-06">
+                <div class="section-header">
+                    <div class="section-num">06</div>
+                    <div class="section-title">OPÉRATIONS & RISQUES</div>
+                </div>
+                
+                <div class="subsection">
+                    <div class="subsection-title">6.1 - Structure opérationnelle</div>
+                    
+                    <div class="content-box">
+                        <h4>👥 Équipe actuelle (8 personnes)</h4>
+                        <p><strong>Management:</strong> Daniel (CEO, full-stack), Vincent (CTO, backend), Camille (Advisor)</p>
+                        <p><strong>Engineering:</strong> 4 Backend/Frontend Developers (2 senior, 2 mid-level) = 1,000+ lines code/day</p>
+                        <p><strong>Product & Growth:</strong> 1 Product Manager (features, analytics, prioritization), 1 Growth/Marketing Manager (acquisition, SEO, ads)</p>
+                        <p><strong>Support & Operations:</strong> 1 Customer Support specialist (onboarding, retention, helpdesk)</p>
+                        <p><strong>Hiring roadmap Year 1:</strong> +2 devs (total 6) | +1 salesperson B2B | +1 ops/finance</p>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <div class="subsection-title">6.2 - Plan de financement détaillé</div>
+                    
+                    <div class="content-box">
+                        <h4>🎯 FUNDING NEED: 500k€</h4>
+                        <p><strong>Use of Funds Breakdown:</strong></p>
+                        <ul>
+                            <li>Product Development: 180k€ (backend, frontend, DevOps, infrastructure setup)</li>
+                            <li>Operations & Team: 150k€ (salaries Year 1, office, legal)</li>
+                            <li>Sales & Marketing: 120k€ (Google Ads, SEO, events, partnerships)</li>
+                            <li>Buffer & Contingency: 50k€ (unexpected costs, flexibility)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="advantage-grid">
+                        <div class="advantage-item">
+                            <h4>💼 Funding Sources (Target)</h4>
+                            <p><strong>Seed Round:</strong> 500k€</p>
+                            <p><strong>Timeline:</strong> Q4 2024 (closing by Jan 2025)</p>
+                            <p><strong>Valuation:</strong> 2.5-3.5M€ pre-money (based on comparable SaaS rounds)</p>
+                            <p><strong>Equity dilution:</strong> 15-20%</p>
+                            <p><strong>Investor profile:</strong> Early-stage VCs, angels, strategic investors (real estate tech focused)</p>
+                        </div>
+                        <div class="advantage-item">
+                            <h4>🚀 Growth Funding Strategy</h4>
+                            <p><strong>Series A (Year 2):</strong> 5-10M€ for national expansion + product development</p>
+                            <p><strong>Series B (Year 3+):</strong> 20-50M€ for international expansion + M&A</p>
+                            <p><strong>Exit Strategy:</strong> Strategic acquisition (SeLoger, PAP parent, PropTech fund) or IPO (2028-2030 timeline)</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <div class="subsection-title">6.3 - Investissement initial détaillé</div>
+                    
+                    <div class="table-wrapper">
+                        <table class="financial-table">
+                            <tr>
+                                <th>Catégorie</th>
+                                <th>Détail</th>
+                                <th>Montant</th>
+                            </tr>
+                            <tr>
+                                <td colspan="3"><strong>CAPEX INITIAL</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Infrastructure IT</td>
+                                <td>Serveurs, domaines, CDN, monitoring</td>
+                                <td>30k€</td>
+                            </tr>
+                            <tr>
+                                <td>Développement Custom</td>
+                                <td>Backend Django, Frontend React, DevOps</td>
+                                <td>80k€</td>
+                            </tr>
+                            <tr>
+                                <td>Bureau & Equipment</td>
+                                <td>Espace coworking, laptops, mobilier</td>
+                                <td>20k€</td>
+                            </tr>
+                            <tr>
+                                <td>Licenses & Legal</td>
+                                <td>Licenses SaaS, legal setup, CNIL</td>
+                                <td>30k€</td>
+                            </tr>
+                            <tr>
+                                <td>User Acquisition (Ads)</td>
+                                <td>Google Ads initial budget</td>
+                                <td>120k€</td>
+                            </tr>
+                            <tr>
+                                <td>Training & Documentation</td>
+                                <td>Onboarding docs, video tutorials</td>
+                                <td>40k€</td>
+                            </tr>
+                            <tr class="total">
+                                <td colspan="2"><strong>TOTAL CAPEX</strong></td>
+                                <td><strong>320k€</strong></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3"><strong>OPEX INITIAL (Year 1)</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Personnel (salaries + taxes)</td>
+                                <td>8 people × avg 60k€</td>
+                                <td>480k€</td>
+                            </tr>
+                            <tr>
+                                <td>APIs & Third-party</td>
+                                <td>AWS, Stripe, Onfido, Veriff, etc.</td>
+                                <td>140k€</td>
+                            </tr>
+                            <tr>
+                                <td>Office & Operations</td>
+                                <td>Rent, utilities, supplies</td>
+                                <td>80k€</td>
+                            </tr>
+                            <tr>
+                                <td>Marketing & Acquisition</td>
+                                <td>SEO, events, partnerships</td>
+                                <td>260k€</td>
+                            </tr>
+                            <tr class="total">
+                                <td colspan="2"><strong>TOTAL OPEX Year 1</strong></td>
+                                <td><strong>960k€</strong></td>
+                            </tr>
+                            <tr class="total">
+                                <td colspan="2"><strong>TOTAL CASH REQUIRED Year 1</strong></td>
+                                <td><strong>1,280k€</strong></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><strong>FUNDING NEEDED (assumes 300k€ founders + 500k€ seed)</strong></td>
+                                <td><strong>500k€</strong></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SECTION 07: CONCLUSION -->
+            <div class="page" id="section-07">
+                <div class="section-header">
+                    <div class="section-num">07</div>
+                    <div class="section-title">CONCLUSION & VISION</div>
+                </div>
+                
+                <div class="conclusion-box">
+                    <p>Transpareo adresse un marché fragmenté de <strong>282-343 milliards d'euros</strong> avec une solution unique combinant <strong>confiance vérifiée + centralisation complète + écosystème intégré</strong>.</p>
+                    
+                    <p>Notre avantage concurrentiel durable repose sur 4 piliers:</p>
+                    <ul style="margin-left: 20px; margin-bottom: 20px;">
+                        <li><strong>🔐 Confiance:</strong> Avis vérifiés (data moat) impossible à copier rapidement</li>
+                        <li><strong>🏢 Centralisation:</strong> Dashboard unique crée switching costs élevés</li>
+                        <li><strong>⚡ UX Frictionless:</strong> Adoption 3-5x plus rapide que competitors</li>
+                        <li><strong>🌐 Écosystème:</strong> Network effects exponentiels vs silos verticaux</li>
+                    </ul>
+                    
+                    <p>Les unit economics sains <strong>(LTV/CAC 5.2x, gross margin 90%)</strong> permettent profitabilité rapide (break-even Month 8) et croissance organique sans levée massive capital externe.</p>
+                    
+                    <p>Avec exécution solide et capital suffisant, Transpareo peut devenir le <strong>leader français incontesté de l'immobilier d'ici 2030</strong>, atteignant une valuation de <strong>2B€+</strong> avec 2M+ utilisateurs et 120M€+ de revenue annuelle.</p>
+                    
+                    <p style="margin-top: 30px; padding-top: 30px; border-top: 2px solid rgba(255, 107, 53, 0.3); font-size: 14px;">Le marché immobilier français mérite une plateforme de confiance, centralisée, et transparente. Transpareo est cette opportunité.</p>
+                </div>
+                
+                <div class="subsection" style="margin-top: 50px;">
+                    <div class="subsection-title">Prochaines étapes</div>
+                    
+                    <div class="content-box">
+                        <h4>📋 Timeline immédiate (4 semaines)</h4>
+                        <ul>
+                            <li>✓ Finir MVP Toulouse (candidatures + artisans working)</li>
+                            <li>✓ Lancer 100 beta testers (friends & family)</li>
+                            <li>✓ Collecte feedback intensif</li>
+                            <li>✓ Atteindre 2+ locations conclues</li>
+                            <li>✓ Finaliser term sheet avec investisseurs</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>🎯 Métriques de succès Year 1</h4>
+                        <ul>
+                            <li>✓ 5,600 utilisateurs (mix segments)</li>
+                            <li>✓ 676 premium paying users</li>
+                            <li>✓ 50-100 locations matched & signed</li>
+                            <li>✓ 762k€ revenue</li>
+                            <li>✓ NPS 50+ (very good for SaaS)</li>
+                            <li>✓ Break-even Month 8-9</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="subsection" style="margin-top: 40px;">
+                    <div class="content-box" style="background: linear-gradient(135deg, #ffe8dc 0%, #fff0e8 100%); border: none; text-align: center;">
+                        <p style="font-size: 16px; font-weight: 700; color: #ff6b35; margin-bottom: 10px;">Rédigé par</p>
+                        <p><strong>Daniel Altaf</strong> (CEO) | <strong>Vincent Daout</strong> (CTO) | <strong>Camille David</strong> (Co-Founder & Advisor)</p>
+                        <p style="margin-top: 15px; color: #999;">2 décembre 2025 | Toulouse, France</p>
+                        <p style="margin-top: 10px; color: #ff6b35; font-weight: 600;">contact@transpareo.fr | www.transpareo.fr</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Navigation smooth scroll
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                updateActiveNav(id);
+            }
+        }
+        
+        function updateActiveNav(id) {
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            const activeItem = Array.from(document.querySelectorAll('.nav-item')).find(item => {
+                return item.textContent.includes(id.split('-')[1] || 'Couverture');
+            });
+            if (activeItem) activeItem.classList.add('active');
+        }
+        
+        // Chart.js Charts
+        const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+        new Chart(revenueCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Année 1', 'Année 2', 'Année 3'],
+                datasets: [
+                    {
+                        label: 'Abonnements',
+                        data: [353, 1450, 8100],
+                        backgroundColor: 'rgba(255, 107, 53, 0.8)',
+                        borderColor: '#ff6b35',
+                        borderWidth: 2
+                    },
+                    {
+                        label: 'Commissions',
+                        data: [334, 1750, 8200],
+                        backgroundColor: 'rgba(255, 140, 66, 0.8)',
+                        borderColor: '#ff8c42',
+                        borderWidth: 2
+                    },
+                    {
+                        label: 'Partenariats',
+                        data: [75, 350, 2400],
+                        backgroundColor: 'rgba(255, 165, 0, 0.8)',
+                        borderColor: '#ffa500',
+                        borderWidth: 2
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { font: { size: 12 }, padding: 15 }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: { callback: v => v + 'k€' }
+                    }
+                }
+            }
+        });
+        
+        const usersCtx = document.getElementById('usersChart').getContext('2d');
+        new Chart(usersCtx, {
+            type: 'line',
+            data: {
+                labels: ['Année 1', 'Année 2', 'Année 3'],
+                datasets: [
+                    {
+                        label: 'Total Users',
+                        data: [5600, 25000, 100000],
+                        borderColor: '#ff6b35',
+                        backgroundColor: 'rgba(255, 107, 53, 0.1)',
+                        borderWidth: 3,
+                        tension: 0.4,
+                        fill: true
+                    },
+                    {
+                        label: 'Premium Users',
+                        data: [676, 2400, 9000],
+                        borderColor: '#ff8c42',
+                        backgroundColor: 'rgba(255, 140, 66, 0.1)',
+                        borderWidth: 3,
+                        tension: 0.4,
+                        fill: true
+                    },
+                    {
+                        label: 'Monthly Active',
+                        data: [1840, 8500, 32000],
+                        borderColor: '#ffa500',
+                        backgroundColor: 'rgba(255, 165, 0, 0.1)',
+                        borderWidth: 3,
+                        tension: 0.4,
+                        fill: true
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { font: { size: 12 }, padding: 15 }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: { callback: v => (v/1000).toFixed(0) + 'k' }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
